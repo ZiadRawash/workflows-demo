@@ -1,9 +1,18 @@
 name: manual workflow
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'choose environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
 jobs:
   manual-job:
     runs-on: ubuntu-latest
     steps:
       - name: print welcome message
-        run: echo "welcome to manual workflow"
+        run: echo "welcome to manual workflow, you have chosen ${{ github.event.inputs.environment }} environment"
