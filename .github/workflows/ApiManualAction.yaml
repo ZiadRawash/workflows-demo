@@ -1,0 +1,11 @@
+## Trigger the workflow manually with API call
+name: api manual workflow
+on:
+  repository_dispatch:
+    types: [incident_report]
+jobs:
+  handle-incident:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print incident message
+        run: echo "print incident report, triggered by API call"
